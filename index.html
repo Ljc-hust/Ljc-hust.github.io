@@ -1,11 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>mypage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Anime Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .image-slider {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .image-slider img {
+            max-height: 70vh;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <h1>余余下午好</h1>
-    <p>祝你早安 午安 晚安</p>
+    <header>
+        <h1>My Anime Gallery</h1>
+        <p>Explore the world of anime through my collection of images.</p>
+    </header>
+
+    <section>
+        <div class="container">
+        <div class="image-slider">
+            <!-- Add your image filenames here -->
+            <img src="images/92322972_p0.jpg" alt="Anime Image 1">
+            <img src="images/103807611_p0.jpg" alt="Anime Image 2">
+            <img src="images/103941500_p0.jpg" alt="Anime Image 3">
+            <img src="images/107947109_p0.jpg" alt="Anime Image 4">
+            <!-- Add more images as needed -->
+            <!-- Duplicate the images for smooth looping -->
+            <img src="images/92322972_p0.jpg" alt="Anime Image 1">
+            <img src="images/103807611_p0.jpg" alt="Anime Image 2">
+            <img src="images/103941500_p0.jpg" alt="Anime Image 3">
+            <img src="images/107947109_p0.jpg" alt="Anime Image 4">
+        </div>
+        </div>
+    </section>
+
+
+
+
+    <footer>
+        <p>Contact: 1014561734@qq.com</p>
+    </footer>
+
+    <script>
+        // JavaScript logic for smooth scrolling
+        const imageSlider = document.querySelector('.image-slider');
+
+        // Clone the first set of images
+        const originalImages = document.querySelectorAll('.image-slider img');
+        originalImages.forEach(img => {
+            const clone = img.cloneNode(true);
+            imageSlider.appendChild(clone);
+        });
+
+        // Start the animation
+        let counter = 0;
+        setInterval(() => {
+            counter++;
+            imageSlider.style.transform = `translateX(${-counter * 100}%)`;
+            if (counter === originalImages.length / 2) {
+                counter = 0;
+            }
+        }, 5000); // Change the duration as needed (milliseconds)
+    </script>
 </body>
 </html>
